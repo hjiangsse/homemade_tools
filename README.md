@@ -8,3 +8,10 @@ some homemade tools to increase working efficiency
 >   owl -u [user] -h [hostaddr]  
 > example:  
 >   own -u jingle -h 192.168.2.129
+
+2. persona
+> do string(pattern) repalcement in all regular writeable files under current directory  
+> usage:  
+>   persona -o oldstring -n newstring  
+> example:  
+>   persona -o shanghai -n zhangjiang  

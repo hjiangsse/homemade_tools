@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+
+help () {
+    echo "usage: "
+    echo "    persona -o old -n new"
+}
+
+#process command line arguments
+while getopts ":o:n:" arg; do
+    case "$arg" in
+        o)
+            o=${OPTARG}
+            ;;
+        n)
+            n=${OPTARG}
+            ;;
+        *)
+	    help
+	    exit 1
+            ;;
+    esac
+done
+
+
+files=$(find .)
+for file in ${files}
+do
+    #if this is a regular file and can be writed
+    if [ -f ${file} -a -w ${file} ]; then
+	read -p "Do you want to make string replacing[${o} --> ${n}] in file: ${file}？ 【Yes/No】" yn
+	case $yn in
+	    [Yy]*)
+		sed -i "s/${o}/${n}/g" ${file};
+		break;;
+	    [Nn]*)
+	    ;;
+	esac
+    fi
+done
