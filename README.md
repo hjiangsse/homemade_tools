@@ -17,8 +17,7 @@ some homemade tools to increase working efficiency
 >   persona -o shanghai -n zhangjiang
 
 ## 3. newborn
-do file(s) rename in current directory (example: test.txt --> test.bak)  
-usage:
+do file(s) rename in current directory (example: test.txt --> test.bak), usage:
 ```  
 newborn name --from exe --to txt
 ```  
