@@ -14,4 +14,7 @@ some homemade tools to increase working efficiency
 > usage:  
 >   persona -o oldstring -n newstring  
 > example:  
->   persona -o shanghai -n zhangjiang  
+>   persona -o shanghai -n zhangjiang
+
+3. newborn
+> do file(s) rename in current directory (example: test.txt --> test.bak)
