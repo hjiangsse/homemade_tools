@@ -36,6 +36,38 @@ func NameChangeAction(c *cli.Context) error {
 	return nil
 }
 
+func ContentChangeAction(c *cli.Context) error {
+	fromstr := c.String("from")
+	deststr := c.String("to")
+
+	fileinfos, err := ioutil.ReadDir(".")
+	if err != nil {
+		return err
+	}
+
+	for _, info := range fileinfos {
+		file, err := os.Stat(info.Name())
+		if err != nil {
+			return err
+		}
+
+		fileMode := file.Mode()
+		if fileMode.IsRegular() {
+			originContents, err := ioutil.ReadFile(info.Name())
+			if err != nil {
+				return err
+			}
+
+			newContents := strings.Replace(string(originContents), fromstr, deststr, -1)
+			err = ioutil.WriteFile(info.Name(), []byte(newContents), 0)
+			if err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
 func main() {
 	flags := []cli.Flag{
 		&cli.StringFlag{
@@ -66,10 +98,7 @@ func main() {
 			Aliases: []string{"c"},
 			Usage:   "change file contents in `PWD`",
 			Flags:   flags,
-			Action: func(c *cli.Context) error {
-				fmt.Println("This is just file contents change!")
-				return nil
-			},
+			Action:  ContentChangeAction,
 		},
 	}
 
