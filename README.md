@@ -18,8 +18,12 @@ some homemade tools to increase working efficiency
 
 3. newborn
 > do file(s) rename in current directory (example: test.txt --> test.bak)  
-> usage:  
->   newborn name --from exe --to txt  
->   the privious command will change "exe" to "txt" in all file name in current directory  
->   newborn content --from jingle --to mingle  
->   the privious command will change "exe" to "txt" in all file content in current directory  
+> usage:
+```  
+newborn name --from exe --to txt
+```  
+> the privious command will change "exe" to "txt" in all file name in current directory  
+```
+newborn content --from jingle --to mingle  
+```
+> the privious command will change "exe" to "txt" in all file content in current directory  
