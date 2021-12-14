@@ -33,6 +33,8 @@ func FastPushAction(c *cli.Context) error {
 		return err
 	}
 
+	fmt.Println("----------------------------------------")
+	fmt.Println("git add start!")
 	for _, info := range fileinfos {
 		filename := info.Name()
 		if _, ok := excluded_map[filename]; !ok {
@@ -44,20 +46,30 @@ func FastPushAction(c *cli.Context) error {
 			}
 		}
 	}
+	fmt.Println("git add finish!")
+	fmt.Println("----------------------------------------")
 
+	fmt.Println("----------------------------------------")
+	fmt.Println("git commit start!")
 	commit_cmd := exec.Command("git", "commit", "-m", commit_msg)
 	commit_out, err := commit_cmd.Output()
 	if err != nil {
 		return err
 	}
 	fmt.Println(string(commit_out))
+	fmt.Println("git commit finish!")
+	fmt.Println("----------------------------------------")
 
+	fmt.Println("----------------------------------------")
+	fmt.Println("git push start!")
 	push_cmd := exec.Command("git", "push")
 	push_out, err := push_cmd.Output()
 	if err != nil {
 		return err
 	}
 	fmt.Println(string(push_out))
+	fmt.Println("git push finish!")
+	fmt.Println("----------------------------------------")
 
 	return nil
 }
