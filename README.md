@@ -31,4 +31,21 @@ the privious command will change "exe" to "txt" in all file name in current dire
 ```
 newborn content --from jingle --to mingle  
 ```
-the privious command will change "exe" to "txt" in all file content in current directory  
+the privious command will change "exe" to "txt" in all file content in current directory
+
+## 4. gitacc
+accelerate git add, git commit, and git push process
+``` bash
+NAME:
+   gitacc.exe - A new cli application
+
+USAGE:
+   gitacc.exe [global options] command [command options] [arguments...]
+
+COMMANDS:
+   fastpush, fp  fast push
+   help, h       Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h  show help (default: false)
+```
