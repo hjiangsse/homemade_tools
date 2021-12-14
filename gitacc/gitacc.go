@@ -34,12 +34,19 @@ func FastPushAction(c *cli.Context) error {
 
 	fmt.Println("----------------------------------------")
 	fmt.Println("git add start!")
+	addu_cmd := exec.Command("git", "add", "-u")
+	addu_out, err := addu_cmd.Output()
+	if err != nil {
+		return err
+	}
+	fmt.Println(string(addu_out))
+
 	for _, info := range fileinfos {
 		filename := info.Name()
-		if _, ok := excluded_map[filename]; !ok {
-			//file not in the excluded file list, do add commit and push
-			add_cmd := exec.Command("git", "add", filename)
-			err := add_cmd.Run()
+		if _, ok := excluded_map[filename]; ok {
+			//file in the excluded file list, do reset --
+			reset_cmd := exec.Command("git", "reset", "--", filename)
+			err := reset_cmd.Run()
 			if err != nil {
 				return err
 			}
