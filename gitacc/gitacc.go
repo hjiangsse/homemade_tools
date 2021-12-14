@@ -25,7 +25,6 @@ func GetExcludedFileMap(files string) map[string]int {
 func FastPushAction(c *cli.Context) error {
 	excluded_files := c.String("exclude")
 	excluded_map := GetExcludedFileMap(excluded_files)
-
 	commit_msg := c.String("message")
 
 	fileinfos, err := ioutil.ReadDir(".")
