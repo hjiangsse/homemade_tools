@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -45,14 +46,18 @@ func FastPushAction(c *cli.Context) error {
 	}
 
 	commit_cmd := exec.Command("git", "commit", "-m", commit_msg)
-	if err = commit_cmd.Run(); err != nil {
+	commit_out, err := commit_cmd.Output()
+	if err != nil {
 		return err
 	}
+	fmt.Println(string(commit_out))
 
 	push_cmd := exec.Command("git", "push")
-	if err = push_cmd.Run(); err != nil {
+	push_out, err := push_cmd.Output()
+	if err != nil {
 		return err
 	}
+	fmt.Println(string(push_out))
 
 	return nil
 }
